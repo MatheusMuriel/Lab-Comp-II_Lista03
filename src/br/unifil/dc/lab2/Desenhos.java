@@ -7,7 +7,8 @@ import java.awt.*;
  * Classe que contem as posiçoes, cores e forma dos desenhos.
  *
  * @author Guilherme Augusto da Rocha Manhani
- * @author MatheusMuriel
+ * @author Matheus Muriel
+ * @author Arthur Berbert
  * @version (1.04)
  */
 public class Desenhos
