@@ -13,12 +13,72 @@ import java.awt.geom.Line2D;
 public class Desenhos
 {
     public static void desenhoLivre(Graphics2D pincel, Dimension dim) {
-        int[] gabinete = {250,100,200,400};
+        BasicStroke bs = new BasicStroke(1);
+        BasicStroke ss = new BasicStroke(3);
+
+        int[] gabinete = {250,160,200,340};
         pincel.drawRect(gabinete[0], gabinete[1], gabinete[2], gabinete[3]);
-        int[] baias ={gabinete[0] + 30, gabinete[1] + 10, 150, 30};
-        pincel.drawRect(baias[0], baias[1], baias[2], baias[3]);
-        pincel.setStroke(new BasicStroke(3));
-        pincel.draw(new Line2D.Double(0,0, 100, 100));
+
+        //parte superior
+        int[] xsTop = { 250, 250, 275, 425, 450, 450 };
+        int[] ysTop = { 160, 130, 100, 100, 130, 160 };
+        pincel.drawPolygon(xsTop,ysTop,xsTop.length);
+        pincel.drawLine(xsTop[1],ysTop[1],xsTop[4],ysTop[4]);
+        //
+
+        //botão power
+        int[] xsPower = {343, 340, 360, 357};
+        int[] ysPower = {122, 107, 107, 122};
+        pincel.drawPolygon(xsPower, ysPower, xsPower.length);
+        pincel.drawOval(345,110,10,10);
+        pincel.drawLine(350,110,350,115);
+        //
+
+        //Conectores de fone
+        pincel.setStroke(ss);
+        pincel.setColor(Color.green);
+        pincel.drawOval(336,135,10,10);
+        pincel.setColor(Color.pink);
+        pincel.drawOval(354,135,10,10);
+        pincel.setColor(Color.black);
+        pincel.setStroke(bs);
+        //
+
+        //USB
+        pincel.drawRect(304,135,15,8);
+        pincel.fillRect(304,135,15,4);
+
+        pincel.drawRect(382,135,15,8);
+        pincel.fillRect(382,135,15,4);
+        //
+
+        //Baias
+        pincel.drawRect(280,180,140,30);
+        pincel.drawRect(280,220,140,30);
+        pincel.drawRect(280,260,140,30);
+        //
+
+        //disquetes
+        pincel.drawRect(290,300,120,30); //Drive
+        pincel.drawOval(320,305,60,20);  //Concavidade
+        pincel.setColor(Color.WHITE);
+        pincel.fillRect(300,310,100,10);
+        pincel.setColor(Color.black);
+        pincel.drawRect(300,310,100,10); //Entrada do disquete
+        pincel.drawRect(398,323,10,5);   //botão
+
+        pincel.drawRect(290,340,120,30); //Drive
+        pincel.drawOval(320,345,60,20);  //Concavidade
+        pincel.setColor(Color.WHITE);
+        pincel.fillRect(300,350,100,10); //Entrada do disquete
+        pincel.setColor(Color.black);
+        pincel.drawRect(300,350,100,10);
+        pincel.drawRect(398,363,10,5);   //botão
+        //
+
+        //Escrito da Marca
+        pincel.drawString("AlunoTEC", 325,480);
+
 
     }
 
