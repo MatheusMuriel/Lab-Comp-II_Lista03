@@ -14,6 +14,15 @@ import java.awt.*;
 public class Desenhos
 {
 
+    public static void drawRect(Graphics2D p, int x1, int y1, int x2,
+             int y2, float rW, float rH){
+        //
+        p.drawRect((int) (x1 * rW),
+                (int) (y1 * rH),
+                (int) (x2 * rW),
+                (int) (y2 * rH));
+    }
+
     public static void desenhoLivre(Graphics2D pincel, Dimension dim) {
 
     }
@@ -88,13 +97,16 @@ public class Desenhos
     public static void desenharGabinete(Graphics2D pincel, Dimension gab){
         BasicStroke bs = new BasicStroke(1);
         BasicStroke ss = new BasicStroke(3);
-
+        final float rW = 800;
+        final float rH = 600;
+        float proporcaoX = gab.width/rW;
+        float proporcaoy = gab.height/rH;
         int[] gabinete = {250,160,200,340};
-        pincel.drawRect(gabinete[0], gabinete[1], gabinete[2], gabinete[3]);
+        drawRect(pincel, 250, 160, 200, 340, proporcaoX, proporcaoy);
 
         //parte superior
-        int[] xsTop = { 250, 250, 275, 425, 450, 450 };
-        int[] ysTop = { 160, 130, 100, 100, 130, 160 };
+        int[] xsTop = { (int) 250,(int) 250,(int) 275,(int) 425,(int) 450,(int) 450 };
+        int[] ysTop = { (int) 160,(int) 130,(int) 100,(int) 100,(int) 130,(int) 160 };
         pincel.drawPolygon(xsTop,ysTop,xsTop.length);
         pincel.drawLine(xsTop[1],ysTop[1],xsTop[4],ysTop[4]);
         //
@@ -150,8 +162,39 @@ public class Desenhos
         //
 
         //Escrito da Marca
-        pincel.drawString("AlunoTEC", 325,480);
+        //pincel.drawString("AlunoTEC", 325,480);
 
+    }
+
+    /**
+     *
+     * @param x0 200
+     * @param y0 200
+     * @param diametro Tamanho da altura e largura do retângulo em que o polígono estará inscrito;
+     * @param numFaces Quantidade de lados do polígono desejado.
+     */
+    public static void desenhaPolígonoRegular(
+            int x0, int y0, int diametro, int numFaces, Graphics2D pincel){
+        x0 = 200;
+        y0 = 200;
+        pincel.drawOval(x0,y0,1,1);
+        diametro = 200;
+
+        float distanciaAngular = (360/numFaces);
+        int[] faces = new int[numFaces];
+        int contador = 0;
+        for (int i: faces){
+            faces[i] = contador;
+            contador += distanciaAngular;
+        }
+        pincel.drawOval(x0,y0,diametro,diametro);
+        pincel.drawPolygon(faces,faces,faces.length);
+
+        int r = diametro / 2;
+        int xC = (x0 + r);
+        int yC = (y0 + r);
+
+        pincel.drawLine(x0,y0,xC,yC);
     }
 
 }

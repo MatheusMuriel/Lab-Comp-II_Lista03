@@ -79,7 +79,9 @@ class Tela extends JPanel {
             case "Computador":
                 Desenhos.desenharGabinete(g2d, getSize());
                 break;
-
+            case "Polígono":
+                Desenhos.desenhaPolígonoRegular(200,200,200,5,g2d);
+                break;
             default:
                 Desenhos.desenhoLivre(g2d, getSize());
                 break;
